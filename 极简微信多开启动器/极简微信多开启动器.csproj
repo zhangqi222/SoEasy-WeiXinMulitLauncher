@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net4.6</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <StartupObject>极简微信多开启动器.Program</StartupObject>
+    <RootNamespace>极简微信多开启动器</RootNamespace>
+    <AssemblyName>极简微信多开启动器v1</AssemblyName>
+    <Version>1.0</Version>
+    <!-- 优化配置 -->
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .NET Framework 4.6不需要额外的NuGet包 -->
+  </ItemGroup>
+
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
+    <!-- 复制依赖项到输出目录 -->
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(OutputPath)" />
+  </Target>
+
+</Project>
